@@ -12,6 +12,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-v3peazS6SCLIs9Uu8I+pE9Cl2s3Q2224d8T/912mmrYgT22s22x1cr7e/C2udjP3GjRU5z3p3m/9zpnIegEvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Pegar esto en el <head> de tu HTML -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
@@ -630,11 +633,7 @@
         .timeline-item.right {
             left: 50%;
         }
-           .timeline-item.rightup {
-           position:absolute;
-           top:46.8%;
-           left:-48%;
-        }
+       
         .timeline-item.right::after {
             left: -10px;
         }
@@ -884,57 +883,37 @@
         
         /* 16. Media Queries */
         @media (max-width: 768px) {
-            /* Mobile Navigation Menu */
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Start off-screen */
-                width: 80%;
-                height: 100%;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                background-color: var(--color-card-bg);
-                box-shadow: -10px 0 30px rgba(var(--shadow-color), 0.1);
-                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-link {
-                font-size: 1.5rem;
-            }
+            /* ... (mantén tus otros estilos para móvil aquí) ... */
+
+            /* INICIO: REGLAS CORREGIDAS PARA LA LÍNEA DE TIEMPO */
             .timeline::after {
+                /* Mueve la línea vertical a la izquierda */
                 left: 20px;
             }
+
             .timeline-item {
+                /* Asegura que todos los ítems ocupen el ancho completo */
                 width: 100%;
-                padding-left: 50px;
+                padding-left: 50px; 
                 padding-right: 10px;
             }
-            .timeline-item.left, .timeline-item.right {
-                left: 0;
-            }
-            .timeline-item::after {
-                left: 10px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-column .footer-title::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .footer-social-nav {
-                justify-content: center;
-            }
-            .footer-contact-list li,
-            .footer-contact-list button {
-                justify-content: center;
-            }
-        }
+            
+            /* --- ESTA ES LA CORRECCIÓN CLAVE --- */
+            /* Apunta a TODOS los ítems, incluyendo '.rightup' */
+            .timeline-item.left, 
+            .timeline-item.right,
+        
 
+            .timeline-item::after {
+                /* Alinea el punto del ítem con la nueva línea vertical */
+                left: 10px;
+                right: auto; 
+            }
+            /* FIN: REGLAS CORREGIDAS PARA LA LÍNEA DE TIEMPO */
+/* Con esta regla anulas el position: absolute del item .rightup en móvil */
+         
+            /* ... (mantén tus otros estilos para móvil aquí) ... */
+        }
         @media (min-width: 769px) {
             .mobile-menu-toggle {
                 display: none;
@@ -964,14 +943,14 @@
 <body>
 
     <div class="preloader">
-        <div class="preloader-logo">LION.</div>
+        <div class="preloader-logo">AXEL.</div>
     </div>
 
     <div id="scroll-progress"></div>
 
     <header class="header" id="header">
         <div class="container">
-            <a href="#hero" class="logo">Lion</a>
+            <a href="#hero" class="logo">Axel</a>
             <nav>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="#about" class="nav-link" data-lang="navAbout">Sobre mí</a></li>
@@ -998,7 +977,7 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <p class="hero-greeting" data-lang="heroGreeting">Hola, mi nombre es</p>
-                        <h1 class="hero-name shimmer">Lion</h1>
+                        <h1 class="hero-name shimmer">Axel</h1>
                         <h2 class="hero-title" data-lang="heroTitle">Vendedor de Indumentaria y Desarrollador Web</h2>
                         <p class="section-subtitle" data-lang="heroSubtitle">
                             Convierto ideas en experiencias digitales interactivas, elegantes y de alto rendimiento.
@@ -1009,7 +988,7 @@
                         </div>
                     </div>
                     <div class="hero-image-wrapper reveal">
-                        <img src="https://picsum.photos/seed/portfolioDev/400/400" alt="Lion" class="hero-image">
+                        <img src="imagenes/imagenperfil.jpg" alt="Lion" class="hero-image">
                     </div>
                 </div>
             </div>
@@ -1033,8 +1012,7 @@
                         <li>HTML5</li>
                         <li>CSS3</li>
                         <li>SQL (MySQL)</li>
-                          <li>Arduino</li>
-                            <li>C#</li>
+                       
                         
                     </ul> 
                 </div>
@@ -1042,68 +1020,92 @@
         </section>
 
         <section id="skills">
-            <div class="container">
-                <h2 data-lang="skillsTitle">Habilidades Técnicas</h2>
-                <p class="section-subtitle" data-lang="skillsSubtitle">Un vistazo a las tecnologías que domino y utilizo en mi día a día para construir productos digitales.</p>
-                <div class="skills-grid">
-                    <div class="skill-card reveal" data-skill-level="90%">
-                        <div class="skill-icon">💻</div>
-                        <h3>Frontend</h3>
-                        <p data-lang="skillsFrontendDesc">HTML5, CSS3, JavaScript (ES6+), Responsive Design.</p>
-                        <div class="skill-bar"><div class="skill-level"></div></div>
-                    </div>
-                    <div class="skill-card reveal" data-skill-level="85%">
-                        <div class="skill-icon">⚙️</div>
-                        <h3>Backend</h3>
-                        <p data-lang="skillsBackendDesc">PHP, Node.js (básico), SQL (MySQL).</p>
-                        <div class="skill-bar"><div class="skill-level"></div></div>
-                    </div>
-                    <div class="skill-card reveal" data-skill-level="80%">
-                        <div class="skill-icon">🛠️</div>
-                        <h3 data-lang="skillsToolsTitle">Herramientas</h3>
-                        <p data-lang="skillsToolsDesc">Git, GitHub, VS Code, Figma (moderado), XAMPP,IA.</p>
-                        <div class="skill-bar"><div class="skill-level"></div></div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="container">
-    <h2 data-lang="softSkillsTitle">Habilidades Blandas</h2>
-    <p class="section-subtitle" data-lang="softSkillsSubtitle">Aquí te muestro las cualidades personales que me impulsan en mi trabajo diario.</p>
+      <div class="container">
+    <h2 data-lang="skillsTitle">Habilidades Técnicas</h2>
+    <p class="section-subtitle" data-lang="skillsSubtitle">Un vistazo a las tecnologías que domino y aplico en el desarrollo de soluciones digitales.</p>
     
     <div class="skills-grid">
         <div class="skill-card reveal" data-skill-level="90%">
-            <div class="skill-icon">💬</div> <h3>Responsabilidad</h3>
-            <p data-lang="skillsresponsability">soy una persona responsable</p>
+            <div class="skill-icon"><i class="fas fa-code"></i></div>
+            <h3>Frontend</h3>
+            <p data-lang="skillsFrontendDesc">
+                Desarrollo interfaces modernas y responsivas utilizando HTML5, CSS3 y JavaScript (ES6+). Tengo experiencia en diseño adaptable para distintos dispositivos.
+            </p>
             <div class="skill-bar"><div class="skill-level"></div></div>
         </div>
-        <div class="skill-card reveal" data-skill-level="25%">
-            <div class="skill-icon">🤝</div> <h3>Trabajo en Equipo</h3>
-            <p data-lang="skillswork">me gusta trabajar en equipo</p>
-            <div class="skill-bar"><div class="skill-level"></div></div>
-        </div>
-        <div class="skill-card reveal" data-skill-level="80%">
-            <div class="skill-icon">💡</div> <h3 data-lang="skillsToolsTitle">Adaptabilidad</h3>
-            <p data-lang="skillsadaptability">me adapto fácilmente a nuevas tecnologías</p>
-            <div class="skill-bar"><div class="skill-level"></div></div>
-        </div>
-        <div class="skill-card reveal" data-skill-level="90%">
-            <div class="skill-icon">🧠</div> <h3>Resolucion de Problemas</h3>
-            <p data-lang="skillsresolution">puedo resolver problemas bajo presión</p>
-            <div class="skill-bar"><div class="skill-level"></div></div>
-        </div>
+
         <div class="skill-card reveal" data-skill-level="85%">
-            <div class="skill-icon">📊</div> <h3>Organizacion</h3>
-            <p data-lang="skillsorgan">me gusta tener todo organizado</p>
+            <div class="skill-icon"><i class="fas fa-server"></i></div>
+            <h3>Backend</h3>
+            <p data-lang="skillsBackendDesc">
+                Trabajo con PHP para el manejo de lógica del servidor y bases de datos relacionales como MySQL. También tengo conocimientos básicos de Node.js para proyectos con JavaScript full stack.
+            </p>
             <div class="skill-bar"><div class="skill-level"></div></div>
         </div>
+
         <div class="skill-card reveal" data-skill-level="80%">
-            <div class="skill-icon">🗣️</div> <h3 data-lang="skillsToolsTitle">Comunicacion Efectiva</h3>
-            <p data-lang="skillscomunication">sé comunicarme de manera eficiente para explicar mi punto</p>
+            <div class="skill-icon"><i class="fas fa-toolbox"></i></div>
+            <h3 data-lang="skillsToolsTitle">Herramientas</h3>
+            <p data-lang="skillsToolsDesc">
+                Manejo fluido de Git y GitHub para control de versiones, Visual Studio Code como entorno principal, Figma para diseño de interfaces, XAMPP para servidores locales, y herramientas de inteligencia artificial como soporte en mis procesos.
+            </p>
             <div class="skill-bar"><div class="skill-level"></div></div>
         </div>
     </div>
+</div>
+
+
+
+          <div class="container"> 
+    <h2 data-lang="softSkillsTitle">Habilidades Blandas</h2>
+    <p class="section-subtitle" data-lang="softSkillsSubtitle">Estas son las competencias personales que potencian mi rendimiento y contribuyen al trabajo en equipo.</p>
+    
+    <div class="skills-grid">
+        <div class="skill-card reveal" data-skill-level="90%">
+            <div class="skill-icon"><i class="fas fa-user-check"></i></div>
+            <h3>Responsabilidad</h3>
+            <p data-lang="skillsresponsability">Cumplo con mis tareas en tiempo y forma, asumiendo las consecuencias de mis acciones y manteniendo un alto estándar de compromiso en cada proyecto.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+
+        <div class="skill-card reveal" data-skill-level="85%">
+            <div class="skill-icon"><i class="fas fa-people-group"></i></div>
+            <h3>Trabajo en Equipo</h3>
+            <p data-lang="skillswork">Valoro la colaboración y sé integrarme eficazmente en grupos de trabajo, aportando ideas, escuchando activamente y respetando la diversidad de perspectivas.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+
+        <div class="skill-card reveal" data-skill-level="80%">
+            <div class="skill-icon"><i class="fas fa-arrows-rotate"></i></div>
+            <h3 data-lang="skillsToole">Adaptabilidad</h3>
+            <p data-lang="skillsadaptability">Me adapto rápidamente a nuevas herramientas, metodologías y entornos, lo que me permite mantener la productividad ante el cambio o la incertidumbre.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+
+        <div class="skill-card reveal" data-skill-level="90%">
+            <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+            <h3>Resolución de Problemas</h3>
+            <p data-lang="skillsresolution">Analizo situaciones complejas con pensamiento lógico y creativo, identificando soluciones viables incluso bajo presión o con recursos limitados.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+
+        <div class="skill-card reveal" data-skill-level="85%">
+            <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>Organización</h3>
+            <p data-lang="skillsorgan">Gestiono eficazmente mi tiempo y recursos utilizando métodos estructurados para priorizar tareas, optimizar procesos y cumplir objetivos con precisión.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+
+        <div class="skill-card reveal" data-skill-level="80%">
+            <div class="skill-icon"><i class="fas fa-comments"></i></div>
+            <h3 data-lang="skillsTootle">Comunicación Efectiva</h3>
+            <p data-lang="skillscomunication">Expreso ideas de manera clara y profesional, adaptando el lenguaje según el público, y fomentando la comprensión en contextos técnicos o grupales.</p>
+            <div class="skill-bar"><div class="skill-level"></div></div>
+        </div>
+    </div>
+</div>
+
+
 </div>
 
 
@@ -1154,7 +1156,7 @@
                         </div>
                         <div class="project-info">
                             <h3 data-lang="p1Title">NikeReplic E‑commerce</h3>
-                            <p data-lang="p1Desc">Un sitio de comercio electrónico completo construido desde cero con PHP y MySQL. Incluye carrito de compras, pasarela de pago simulada y panel de administración.</p>
+                            <p data-lang="p1esc">Sitio eCommerce inspirado en Nike donde los usuarios pueden explorar productos, agregarlos al carrito y simular una compra completa. Incluye menu de favoritos,secciones innovadoras y animaciones sutiles.</p>
                             <div class="project-tags">
                                 <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML/CSS</span>
                             </div>
@@ -1187,7 +1189,7 @@
                     </div>
                     <div class="project-card reveal" data-tilt>
                         <div class="project-image">
-                             <img src="https://picsum.photos/seed/project2/600/400" alt="Vista previa del Proyecto Dos">
+                             <img src="imagenes/paneldecontrol.png" alt="Vista previa del Proyecto Dos">
                         </div>
                         <div class="project-info">
                             <h3 data-lang="p2Title">Gasto Diario — App de Finanzas Personales</h3>
@@ -1196,7 +1198,8 @@
                                 <span>JavaScript</span><span>Chart.js</span><span>API REST</span><span>PHP</span>
                             </div>
                              <div class="project-links">
-                                <a href="#" target="_blank" rel="noopener noreferrer" data-lang="pBtnLive">
+                             <a href="http://localhost/portfolio/gasto_diario.php" target="_blank">
+
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
                                     Ver Demo
                                 </a>
@@ -1207,6 +1210,32 @@
                             </div>
                         </div>
                     </div>
+
+
+
+       <div class="project-card reveal" data-tilt>
+                        <div class="project-image">
+                            <img src="imagenes/netflixadmin.png" alt="Vista previa del Proyecto Uno">
+                        </div>
+                        <div class="project-info">
+                            <h3 data-lang="p1Ttle">Dashboard Administrador- Netflix</h3>
+                            <p data-lang="p1esc">Sitio eCommerce inspirado en Nike donde los usuarios pueden explorar productos, agregarlos al carrito y simular una compra completa. Incluye menu de favoritos,secciones innovadoras y animaciones sutiles.</p>
+                            <div class="project-tags">
+                                <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML/CSS</span>
+                            </div>
+                            <div class="project-links">
+                             <a href="http://localhost/portfolio/netflix_dashboard_admin.php" target="_blank">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                                    Ver Demo
+                                </a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" data-lang="pBtnRepo">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>
+                                    Repositorio
+                                </a>
+
+
+
                 </div>
             </div>
         </section>
@@ -1223,7 +1252,7 @@
                 <h3 data-lang="cv1Title">Inicios en Programación</h3>
                 <p class="timeline-date" data-lang="cv1Date">2022</p>
                 <p data-lang="cv1Desc">
-                    Comencé mi formación en la Escuela Técnica en Programación. Durante 4to año adquirí una base sólida en informática, lógica computacional y pensamiento algorítmico, sin programar aún.
+                    Comencé mi formación en la programacion en la E.E.S.T N°5. Durante 4to año adquirí una base  en informática, lógica computacional y pensamiento algorítmico, sin programar aún.
                 </p>
             </div>
         </div>
@@ -1233,7 +1262,7 @@
                 <h3 data-lang="cv2Title">Primeros Lenguajes y Lógica</h3>
                 <p class="timeline-date" data-lang="cv2Date">2023</p>
                 <p data-lang="cv2Desc">
-                    En 5to año inicié mi camino en la programación aprendiendo estructuras básicas, condiciones, ciclos y funciones. Empecé a dominar la lógica y a desarrollar mis primeros algoritmos.
+                    En 5to año inicié mi camino en la programación aprendiendo estructuras básicas de html, estilos basicos y enlaces. Empecé a entender de mejor manera la estructuracion y a desarrollar mis primeras paginas.
                 </p>
             </div>
         </div>
@@ -1243,17 +1272,17 @@
                 <h3 data-lang="cv3Title">Desarrollo de Páginas Web</h3>
                 <p class="timeline-date" data-lang="cv3Date">2024</p>
                 <p data-lang="cv3Desc">
-                    En 6to año comencé a desarrollar sitios web completos aplicando HTML, CSS, JavaScript y PHP. Participé en proyectos académicos que integraban bases de datos y diseño responsive.
+                    En 6to año comencé a desarrollar sitios web intermedios aplicando HTML, CSS, JavaScript y PHP. Participé en proyectos complejos que integraban bases de datos y diseño responsive.
                 </p>
             </div>
         </div>
 
-        <div class="timeline-item rightup reveal">
+        <div class="timeline-item left reveal">
             <div class="timeline-content">
                 <h3 data-lang="cv31bTitle">Fundación de Lion’s Styles</h3>
                 <p class="timeline-date" data-lang="cv31bDate">"Mitad de Año - 2024"</p>
                 <p data-lang="cv31bDesc">
-                    Inicié mi emprendimiento de indumentaria masculina “Lion’s Styles”, donde combino diseño, gestión y desarrollo web profesional para la marca, creando presencia digital y branding propio.
+                    Inicié mi emprendimiento de indumentaria masculina “Lion’s Styles”, donde aprendi sobre gestión y atencion al cliente, ademas de conocimientos sobre como mantener un empredimiento, ganando experiencia real en adminisracion y gestion.
                 </p>
             </div>
         </div>
@@ -1271,9 +1300,13 @@
     </div>
 </div>
 
-                <div class="cv-download-area reveal">
-                    <button id="download-cv" class="btn btn-primary" data-lang="cvBtnDownload">Descargar CV en PDF</button>
-                </div>
+<div class="cv-download-area reveal">
+  <button id="download-cv" class="btn btn-primary" data-lang="cvBtnDownload">
+    Descargar CV en PDF
+  </button>
+</div>
+</div>
+</div>
             </div>
         </section>
 
@@ -1296,8 +1329,8 @@
         <p class="metric-label">Paginas entregadas a clientes</p>
       </div>
       <div class="metric-item reveal">
-        <p class="metric-number" data-count="95"  data-suffix="%">0</p>
-        <p class="metric-label">% Satisfacción Cliente</p>
+        <p class="metric-number" data-count="3"  >0</p>
+        <p class="metric-label">Clientes satisfechos</p>
       </div>
     </div>
   </div>
@@ -1306,7 +1339,7 @@
         <section id="contact">
             <div class="container">
                 <h2 data-lang="contactTitle">Hablemos</h2>
-                <p class="section-subtitle" data-lang="contactSubtitle">¿Tienes una idea, una pregunta o simplemente quieres saludar? No dudes en enviarme un mensaje. ¡Estoy aquí para ayudar!</p>
+                <p class="section-subtitle" data-lang="contactSubtitle">¡Si necesitas alguno de mis servicios como programador no dudes en comunicarte conmigo!</p>
                 <form id="contact-form" class="contact-form reveal">
                     <div class="form-group">
                         <input type="text" id="name" name="name" class="form-input" placeholder="Tu Nombre" required data-lang-placeholder="formName">
@@ -1334,16 +1367,17 @@
                 <address>
                     <ul class="footer-contact-list">
                         <li>
-                            <button id="copy-email-btn" title="Copiar email">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"/><path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"/></svg>
-                                <span id="email-text">tu-email@dominio.com</span>
+                            <button id="copy-email-btn" title="Laioninga250@gmail.com">
+                                Laioninga250@gmail.com
+                                <span id="email-text"></span>
                             </button>
                             <span id="copy-feedback">¡Copiado!</span>
                         </li>
                         <li>
-                            <a href="tel:+5491100000000" target="_blank" rel="noopener noreferrer" title="Llamar por teléfono">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.279-.087.431l4.108 7.293a.414.414 0 0 0 .431.087l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/></svg>
-                                <span>+54 9 11-0000-0000</span>
+                            <a href="tel:1128532460" target="_blank" rel="noopener noreferrer" title="Llamar por teléfono">
+                                11 2853-2460
+                                
+                                <span>11 2853-2460</span>
                             </a>
                         </li>
                     </ul>
@@ -1431,19 +1465,19 @@
                 cvSubtitle: "Un resumen de mi trayectoria profesional, académica y los hitos más importantes de mi carrera.",
                 cv1Title: "Inicios en Programación",
                 cv1Date: "4°Año - 2022",
-                cv1Desc: " Comencé mi formación en la Escuela Técnica en Programación. Durante 4to año adquirí una base sólida en informática, lógica computacional y pensamiento algorítmico, sin programar aún.",
+              
                 cv2Title: "Primeros Lenguajes y Lógica",
                 cv2Date: "5°Año - 2023",
-                cv2Desc: "En 5to año inicié mi camino en la programación aprendiendo estructuras básicas, condiciones, ciclos y funciones. Empecé a dominar la lógica y a desarrollar mis primeros algoritmos.",
+               
                 cv3Title: "Desarrollo de Páginas Web",
                 cv3Date: "6°Año - 2024",
-                cv3Desc: " En 6to año comencé a desarrollar sitios web completos aplicando HTML, CSS, JavaScript y PHP. Participé en proyectos académicos que integraban bases de datos y diseño responsive.",
+               
                 cv31Title: "Fundación de Lion’s Styles",
                 cv31Date: "Mitad de Año - 2024",
-                cv31Desc: " Inicié mi emprendimiento de indumentaria masculina “Lion’s Styles”, donde combino diseño, gestión y desarrollo web profesional para la marca, creando presencia digital y branding propio.",
+               
                 cv4Title: "Proyectos Avanzados y Titulación",
                 cv4Date: "7°Año - 2025 - Actualidad",
-                cv4Desc: " Actualmente curso 7mo año, desarrollando proyectos web avanzados con sistemas integrados, como simuladores, e-commerce y páginas full-stack. Estoy a mitad de camino de recibirme como Técnico en Programación.",
+               
                 cvBtnDownload: "Descargar CV en PDF",
                 metricsTitle: "Reconocimientos y Hitos",
                 metricsSubtitle: "Números que reflejan mi dedicación, experiencia y el impacto de mi trabajo a lo largo del tiempo.",
@@ -1452,7 +1486,7 @@
                 metric3: "Años de Experiencia",
                 metric4: "% Satisfacción Cliente",
                 contactTitle: "Hablemos",
-                contactSubtitle: "¿Tienes una idea, una pregunta o simplemente quieres saludar? No dudes en enviarme un mensaje. ¡Estoy aquí para ayudar!",
+                
                 formName: "Tu Nombre",
                 formEmail: "Tu Email",
                 formMessage: "Tu Mensaje",
@@ -1554,6 +1588,15 @@
             scrollProgress.style.width = `${scrollPercentage}%`;
         };
         window.addEventListener('scroll', updateScrollProgress);
+
+  document.getElementById("download-cv").addEventListener("click", function () {
+    const link = document.createElement("a");
+    link.href = "curriculumaxelinga.pdf.pdf";
+    link.download = "curriculumaxelinga.pdf.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 
         // --- MOBILE NAVIGATION ---
         mobileMenuToggle.addEventListener('click', () => {
